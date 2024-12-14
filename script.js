@@ -1,8 +1,7 @@
 const ctx = document.querySelector("canvas").getContext("2d");
 
 const target = {
-	positionReal: { x: 100, y: 100 },
-	positionStart: { x: 100, y: 100 },
+	position: { x: 100, y: 300 },
 	body: { x: 100, y: 150 },
 	head: { x: 50, y: 50 }
 };
@@ -18,19 +17,19 @@ gameLoop();
 function draw() {
 	clear();
 
-	if (target.positionReal.x >= 700) isGoingRight = false;
-	if (target.positionReal.x <= 0) isGoingRight = true;
+	if (target.position.x >= 700) isGoingRight = false;
+	if (target.position.x <= 0) isGoingRight = true;
 
 	if (isGoingRight) {
-		target.positionReal.x += stepX;
-		target.positionReal.y += stepY;
+		target.position.x += stepX;
+		target.position.y += stepY;
 
-		drawTarget(target.positionReal.x, target.positionReal.y);
+		drawTarget(target.position.x, target.position.y);
 	} else {
-		target.positionReal.x -= stepX;
-		target.positionReal.y -= stepY;
+		target.position.x -= stepX;
+		target.position.y -= stepY;
 
-		drawTarget(target.positionReal.x, target.positionReal.y);
+		drawTarget(target.position.x, target.position.y);
 	}
 
 	requestId = requestAnimationFrame(draw);
